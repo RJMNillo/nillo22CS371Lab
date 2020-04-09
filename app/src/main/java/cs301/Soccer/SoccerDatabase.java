@@ -16,6 +16,8 @@ import java.util.*;
  */
 public class SoccerDatabase implements SoccerDB {
 
+    private HashMap<String,SoccerPlayer> playerBase = new HashMap<String, SoccerPlayer>();
+
     /**
      * add a player
      *
@@ -23,8 +25,23 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean addPlayer(String firstName, String lastName,
-                             int uniformNumber, String teamName) {
-        return false;
+                             int uniformNumber, String teamName)
+    {
+        String targetKey = combineNames(firstName,lastName);
+        //Make a loop to see if names are there
+        //use a While loop
+        Iterator playerIterator = playerBase.entrySet().iterator();
+        while(playerIterator.hasNext())
+        {
+           Map.Entry player = (Map.Entry)playerIterator.next();
+           if(player.getKey().equals(targetKey))
+           {
+               return false;
+           }
+        }
+        //When there are no more names to look for, make a new area on map and return true
+        playerBase.put(targetKey,new SoccerPlayer(firstName,lastName,uniformNumber,teamName));
+        return true;
     }
 
     /**
@@ -182,4 +199,12 @@ public class SoccerDatabase implements SoccerDB {
         return new HashSet<String>();
     }
 
+    //Helper method for Making the Hashvalue for names
+    public String combineNames(String firstName, String lastName)
+    {
+        return firstName + " " + lastName;
+    }
+
 }
+
+
