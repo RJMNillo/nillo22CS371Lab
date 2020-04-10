@@ -24,9 +24,11 @@ public class SoccerDatabase implements SoccerDB {
      * @see SoccerDB#addPlayer(String, String, int, String)
      */
     @Override
+    //Done
     public boolean addPlayer(String firstName, String lastName,
                              int uniformNumber, String teamName)
     {
+        //Checkpoint 1 has ben complete
         String targetKey = combineNames(firstName,lastName);
         //Make a loop to see if names are there
         //use a While loop
@@ -50,7 +52,10 @@ public class SoccerDatabase implements SoccerDB {
      * @see SoccerDB#removePlayer(String, String)
      */
     @Override
-    public boolean removePlayer(String firstName, String lastName) {
+    public boolean removePlayer(String firstName, String lastName)
+    {
+        //Checkpoint 3
+        String targetKey = combineNames(firstName,lastName);
         return false;
     }
 
@@ -60,7 +65,20 @@ public class SoccerDatabase implements SoccerDB {
      * @see SoccerDB#getPlayer(String, String)
      */
     @Override
-    public SoccerPlayer getPlayer(String firstName, String lastName) {
+    //Done
+    public SoccerPlayer getPlayer(String firstName, String lastName)
+    {
+        //Checkpoint 2 Status: has been complete.
+        String targetName = combineNames(firstName,lastName);
+        Iterator playerIterator = playerBase.entrySet().iterator();
+        while(playerIterator.hasNext())
+        {
+            Map.Entry player = (Map.Entry)playerIterator.next();
+            if(player.getKey().equals(targetName))
+            {
+                return (SoccerPlayer) player.getValue();
+            }
+        }
         return null;
     }
 
@@ -202,7 +220,7 @@ public class SoccerDatabase implements SoccerDB {
     //Helper method for Making the Hashvalue for names
     public String combineNames(String firstName, String lastName)
     {
-        return firstName + " " + lastName;
+        return firstName.trim() + " " + lastName.trim();
     }
 
 }
