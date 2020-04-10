@@ -1,5 +1,7 @@
 package cs301.Soccer;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import cs301.Soccer.soccerPlayer.SoccerPlayer;
 import java.io.File;
@@ -56,6 +58,16 @@ public class SoccerDatabase implements SoccerDB {
     {
         //Checkpoint 3
         String targetKey = combineNames(firstName,lastName);
+        Iterator playerIterator = playerBase.entrySet().iterator();
+        while(playerIterator.hasNext())
+        {
+            Map.Entry player = (Map.Entry)playerIterator.next();
+            if(player.getKey().equals(targetKey))
+            {
+                playerBase.remove(targetKey);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -82,13 +94,30 @@ public class SoccerDatabase implements SoccerDB {
         return null;
     }
 
+    //BUMP METHODS
     /**
      * increment a player's goals
      *
      * @see SoccerDB#bumpGoals(String, String)
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public boolean bumpGoals(String firstName, String lastName) {
+    public boolean bumpGoals(String firstName, String lastName)
+    {
+        //This code works. Copy and paste to other ones
+        String targetKey = combineNames(firstName,lastName);
+        Iterator playerIterator = playerBase.entrySet().iterator();
+        while(playerIterator.hasNext())
+        {
+            Map.Entry player = (Map.Entry)playerIterator.next();
+            if(player.getKey().equals(targetKey))
+            {
+                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
+                modPlayer.bumpGoals();
+                playerBase.replace(targetKey,modPlayer);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -97,8 +126,23 @@ public class SoccerDatabase implements SoccerDB {
      *
      * @see SoccerDB#bumpAssists(String, String)
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public boolean bumpAssists(String firstName, String lastName) {
+    public boolean bumpAssists(String firstName, String lastName)
+    {
+        String targetKey = combineNames(firstName,lastName);
+        Iterator playerIterator = playerBase.entrySet().iterator();
+        while(playerIterator.hasNext())
+        {
+            Map.Entry player = (Map.Entry)playerIterator.next();
+            if(player.getKey().equals(targetKey))
+            {
+                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
+                modPlayer.bumpAssists();
+                playerBase.replace(targetKey,modPlayer);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -107,8 +151,23 @@ public class SoccerDatabase implements SoccerDB {
      *
      * @see SoccerDB#bumpShots(String, String)
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public boolean bumpShots(String firstName, String lastName) {
+    public boolean bumpShots(String firstName, String lastName)
+    {
+        String targetKey = combineNames(firstName,lastName);
+        Iterator playerIterator = playerBase.entrySet().iterator();
+        while(playerIterator.hasNext())
+        {
+            Map.Entry player = (Map.Entry)playerIterator.next();
+            if(player.getKey().equals(targetKey))
+            {
+                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
+                modPlayer.bumpShots();
+                playerBase.replace(targetKey,modPlayer);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -117,8 +176,23 @@ public class SoccerDatabase implements SoccerDB {
      *
      * @see SoccerDB#bumpSaves(String, String)
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public boolean bumpSaves(String firstName, String lastName) {
+    public boolean bumpSaves(String firstName, String lastName)
+    {
+        String targetKey = combineNames(firstName,lastName);
+        Iterator playerIterator = playerBase.entrySet().iterator();
+        while(playerIterator.hasNext())
+        {
+            Map.Entry player = (Map.Entry)playerIterator.next();
+            if(player.getKey().equals(targetKey))
+            {
+                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
+                modPlayer.bumpSaves();
+                playerBase.replace(targetKey,modPlayer);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -127,8 +201,23 @@ public class SoccerDatabase implements SoccerDB {
      *
      * @see SoccerDB#bumpFouls(String, String)
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public boolean bumpFouls(String firstName, String lastName) {
+    public boolean bumpFouls(String firstName, String lastName)
+    {
+        String targetKey = combineNames(firstName,lastName);
+        Iterator playerIterator = playerBase.entrySet().iterator();
+        while(playerIterator.hasNext())
+        {
+            Map.Entry player = (Map.Entry)playerIterator.next();
+            if(player.getKey().equals(targetKey))
+            {
+                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
+                modPlayer.bumpFouls();
+                playerBase.replace(targetKey,modPlayer);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -137,8 +226,23 @@ public class SoccerDatabase implements SoccerDB {
      *
      * @see SoccerDB#bumpYellowCards(String, String)
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public boolean bumpYellowCards(String firstName, String lastName) {
+    public boolean bumpYellowCards(String firstName, String lastName)
+    {
+        String targetKey = combineNames(firstName,lastName);
+        Iterator playerIterator = playerBase.entrySet().iterator();
+        while(playerIterator.hasNext())
+        {
+            Map.Entry player = (Map.Entry)playerIterator.next();
+            if(player.getKey().equals(targetKey))
+            {
+                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
+                modPlayer.bumpYellowCards();
+                playerBase.replace(targetKey,modPlayer);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -147,8 +251,23 @@ public class SoccerDatabase implements SoccerDB {
      *
      * @see SoccerDB#bumpRedCards(String, String)
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public boolean bumpRedCards(String firstName, String lastName) {
+    public boolean bumpRedCards(String firstName, String lastName)
+    {
+        String targetKey = combineNames(firstName,lastName);
+        Iterator playerIterator = playerBase.entrySet().iterator();
+        while(playerIterator.hasNext())
+        {
+            Map.Entry player = (Map.Entry)playerIterator.next();
+            if(player.getKey().equals(targetKey))
+            {
+                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
+                modPlayer.bumpRedCards();
+                playerBase.replace(targetKey,modPlayer);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -159,8 +278,27 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     // report number of players on a given team (or all players, if null)
-    public int numPlayers(String teamName) {
-        return -1;
+    public int numPlayers(String teamName)
+    {
+        int players = 0;
+        if(teamName == null)
+        {
+            return playerBase.size();
+        }
+        else
+        {
+            Iterator playerIterator = playerBase.entrySet().iterator();
+            while(playerIterator.hasNext())
+            {
+                Map.Entry player = (Map.Entry)playerIterator.next();
+                SoccerPlayer somePlayer = (SoccerPlayer)player.getValue();
+                if(somePlayer.getTeamName().equals(teamName))
+                {
+                    players++;
+                }
+            }
+        }
+        return players;
     }
 
     /**
@@ -170,7 +308,10 @@ public class SoccerDatabase implements SoccerDB {
      */
     // get the nTH player
     @Override
-    public SoccerPlayer playerNum(int idx, String teamName) {
+    public SoccerPlayer playerNum(int idx, String teamName)
+    {
+        //Needed to count the player number in the teams
+        int teamCount = 0;
         return null;
     }
 
