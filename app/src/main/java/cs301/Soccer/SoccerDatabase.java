@@ -26,7 +26,7 @@ public class SoccerDatabase implements SoccerDB {
      * @see SoccerDB#addPlayer(String, String, int, String)
      */
     @Override
-    //Done
+    //Done (Checkpoint 1)
     public boolean addPlayer(String firstName, String lastName,
                              int uniformNumber, String teamName)
     {
@@ -94,7 +94,7 @@ public class SoccerDatabase implements SoccerDB {
         return null;
     }
 
-    //BUMP METHODS
+    //BUMP METHODS Checkpoint 4
     /**
      * increment a player's goals
      *
@@ -280,6 +280,7 @@ public class SoccerDatabase implements SoccerDB {
     // report number of players on a given team (or all players, if null)
     public int numPlayers(String teamName)
     {
+        //Checkpoint 5 was finished
         int players = 0;
         if(teamName == null)
         {
@@ -310,6 +311,7 @@ public class SoccerDatabase implements SoccerDB {
     @Override
     public SoccerPlayer playerNum(int idx, String teamName)
     {
+        //Checkpoint 6 has been finished.
         //If the id is beyond the map
         if(idx >= playerBase.size())
         {
