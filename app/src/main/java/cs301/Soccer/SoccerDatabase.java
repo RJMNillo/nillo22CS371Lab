@@ -310,8 +310,58 @@ public class SoccerDatabase implements SoccerDB {
     @Override
     public SoccerPlayer playerNum(int idx, String teamName)
     {
-        //Needed to count the player number in the teams
-        int teamCount = 0;
+        //If the id is beyond the map
+        if(idx >= playerBase.size())
+        {
+            return null;
+        }
+        //If the id is beyond a specified team's map
+        if(teamName != null)
+        {
+            if(idx >= numPlayers(teamName))
+            {
+                return null;
+            }
+        }
+        //Make the iterator
+        Iterator playerIterator = playerBase.entrySet().iterator();
+        int currentcount = 0;
+        while(playerIterator.hasNext())
+        {
+            Map.Entry player = (Map.Entry)playerIterator.next();
+            //If no team name has been specified, look at entire hashmap
+            if(teamName == null)
+            {
+                if(currentcount == idx)
+                {
+                    return (SoccerPlayer)player.getValue();
+                }
+                else
+                {
+                    currentcount++;
+                }
+            }
+            //When a team is present
+            else
+            {
+                SoccerPlayer concernedPlayer = (SoccerPlayer)player.getValue();
+                //Is said player in stated team?
+                if(concernedPlayer.getTeamName().equals(teamName))
+                {
+                    //Are they the idxth member in that team?
+                    if(currentcount == idx)
+                    {
+                        return concernedPlayer;
+                    }
+                    //If not, increase the currentcount
+                    else
+                    {
+                        currentcount++;
+                    }
+                }
+            }
+        }
+
         return null;
     }
 
