@@ -34,14 +34,9 @@ public class SoccerDatabase implements SoccerDB {
         String targetKey = combineNames(firstName,lastName);
         //Make a loop to see if names are there
         //use a While loop
-        Iterator playerIterator = playerBase.entrySet().iterator();
-        while(playerIterator.hasNext())
+        if(playerBase.containsKey(targetKey))
         {
-           Map.Entry player = (Map.Entry)playerIterator.next();
-           if(player.getKey().equals(targetKey))
-           {
-               return false;
-           }
+            return false;
         }
         //When there are no more names to look for, make a new area on map and return true
         playerBase.put(targetKey,new SoccerPlayer(firstName,lastName,uniformNumber,teamName));
@@ -58,15 +53,9 @@ public class SoccerDatabase implements SoccerDB {
     {
         //Checkpoint 3
         String targetKey = combineNames(firstName,lastName);
-        Iterator playerIterator = playerBase.entrySet().iterator();
-        while(playerIterator.hasNext())
+        if(playerBase.containsKey(targetKey))
         {
-            Map.Entry player = (Map.Entry)playerIterator.next();
-            if(player.getKey().equals(targetKey))
-            {
-                playerBase.remove(targetKey);
-                return true;
-            }
+            playerBase.remove(targetKey);
         }
         return false;
     }
@@ -82,14 +71,9 @@ public class SoccerDatabase implements SoccerDB {
     {
         //Checkpoint 2 Status: has been complete.
         String targetName = combineNames(firstName,lastName);
-        Iterator playerIterator = playerBase.entrySet().iterator();
-        while(playerIterator.hasNext())
+        if(playerBase.containsKey(targetName))
         {
-            Map.Entry player = (Map.Entry)playerIterator.next();
-            if(player.getKey().equals(targetName))
-            {
-                return (SoccerPlayer) player.getValue();
-            }
+            return playerBase.get(targetName);
         }
         return null;
     }
@@ -106,17 +90,11 @@ public class SoccerDatabase implements SoccerDB {
     {
         //This code works. Copy and paste to other ones
         String targetKey = combineNames(firstName,lastName);
-        Iterator playerIterator = playerBase.entrySet().iterator();
-        while(playerIterator.hasNext())
+        if(playerBase.containsKey(targetKey))
         {
-            Map.Entry player = (Map.Entry)playerIterator.next();
-            if(player.getKey().equals(targetKey))
-            {
-                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
-                modPlayer.bumpGoals();
-                playerBase.replace(targetKey,modPlayer);
-                return true;
-            }
+            SoccerPlayer targetPlayer = playerBase.get(targetKey);
+            targetPlayer.bumpGoals();
+            return true;
         }
         return false;
     }
@@ -131,17 +109,11 @@ public class SoccerDatabase implements SoccerDB {
     public boolean bumpAssists(String firstName, String lastName)
     {
         String targetKey = combineNames(firstName,lastName);
-        Iterator playerIterator = playerBase.entrySet().iterator();
-        while(playerIterator.hasNext())
+        if(playerBase.containsKey(targetKey))
         {
-            Map.Entry player = (Map.Entry)playerIterator.next();
-            if(player.getKey().equals(targetKey))
-            {
-                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
-                modPlayer.bumpAssists();
-                playerBase.replace(targetKey,modPlayer);
-                return true;
-            }
+            SoccerPlayer targetPlayer = playerBase.get(targetKey);
+            targetPlayer.bumpAssists();
+            return true;
         }
         return false;
     }
@@ -156,17 +128,11 @@ public class SoccerDatabase implements SoccerDB {
     public boolean bumpShots(String firstName, String lastName)
     {
         String targetKey = combineNames(firstName,lastName);
-        Iterator playerIterator = playerBase.entrySet().iterator();
-        while(playerIterator.hasNext())
+        if(playerBase.containsKey(targetKey))
         {
-            Map.Entry player = (Map.Entry)playerIterator.next();
-            if(player.getKey().equals(targetKey))
-            {
-                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
-                modPlayer.bumpShots();
-                playerBase.replace(targetKey,modPlayer);
-                return true;
-            }
+            SoccerPlayer targetPlayer = playerBase.get(targetKey);
+            targetPlayer.bumpShots();
+            return true;
         }
         return false;
     }
@@ -181,17 +147,11 @@ public class SoccerDatabase implements SoccerDB {
     public boolean bumpSaves(String firstName, String lastName)
     {
         String targetKey = combineNames(firstName,lastName);
-        Iterator playerIterator = playerBase.entrySet().iterator();
-        while(playerIterator.hasNext())
+        if(playerBase.containsKey(targetKey))
         {
-            Map.Entry player = (Map.Entry)playerIterator.next();
-            if(player.getKey().equals(targetKey))
-            {
-                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
-                modPlayer.bumpSaves();
-                playerBase.replace(targetKey,modPlayer);
-                return true;
-            }
+            SoccerPlayer targetPlayer = playerBase.get(targetKey);
+            targetPlayer.bumpSaves();
+            return true;
         }
         return false;
     }
@@ -206,17 +166,11 @@ public class SoccerDatabase implements SoccerDB {
     public boolean bumpFouls(String firstName, String lastName)
     {
         String targetKey = combineNames(firstName,lastName);
-        Iterator playerIterator = playerBase.entrySet().iterator();
-        while(playerIterator.hasNext())
+        if(playerBase.containsKey(targetKey))
         {
-            Map.Entry player = (Map.Entry)playerIterator.next();
-            if(player.getKey().equals(targetKey))
-            {
-                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
-                modPlayer.bumpFouls();
-                playerBase.replace(targetKey,modPlayer);
-                return true;
-            }
+            SoccerPlayer targetPlayer = playerBase.get(targetKey);
+            targetPlayer.bumpFouls();
+            return true;
         }
         return false;
     }
@@ -231,17 +185,11 @@ public class SoccerDatabase implements SoccerDB {
     public boolean bumpYellowCards(String firstName, String lastName)
     {
         String targetKey = combineNames(firstName,lastName);
-        Iterator playerIterator = playerBase.entrySet().iterator();
-        while(playerIterator.hasNext())
+        if(playerBase.containsKey(targetKey))
         {
-            Map.Entry player = (Map.Entry)playerIterator.next();
-            if(player.getKey().equals(targetKey))
-            {
-                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
-                modPlayer.bumpYellowCards();
-                playerBase.replace(targetKey,modPlayer);
-                return true;
-            }
+            SoccerPlayer targetPlayer = playerBase.get(targetKey);
+            targetPlayer.bumpYellowCards();
+            return true;
         }
         return false;
     }
@@ -256,17 +204,11 @@ public class SoccerDatabase implements SoccerDB {
     public boolean bumpRedCards(String firstName, String lastName)
     {
         String targetKey = combineNames(firstName,lastName);
-        Iterator playerIterator = playerBase.entrySet().iterator();
-        while(playerIterator.hasNext())
+        if(playerBase.containsKey(targetKey))
         {
-            Map.Entry player = (Map.Entry)playerIterator.next();
-            if(player.getKey().equals(targetKey))
-            {
-                SoccerPlayer modPlayer = (SoccerPlayer)player.getValue();
-                modPlayer.bumpRedCards();
-                playerBase.replace(targetKey,modPlayer);
-                return true;
-            }
+            SoccerPlayer targetPlayer = playerBase.get(targetKey);
+            targetPlayer.bumpRedCards();
+            return true;
         }
         return false;
     }
